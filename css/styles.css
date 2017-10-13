@@ -49,3 +49,7 @@ button.btn-outline-light:active, button.btn-outline-light.active
 	border-color: black;
 	background-image: none;
 }
+
+.navbar-text {
+	color: white !important;
+}

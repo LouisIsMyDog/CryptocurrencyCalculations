@@ -543,5 +543,63 @@
 	  	let earned = retrieveElement("earned").element;
 	  	earned.placeholder = "-";
   	}
+  	//*************************//
+  	// get JSON from the website
+   	var getJSON = function(url, callback) {
+				  		var xhr = new XMLHttpRequest();
+				  		xhr.open('GET', url, true);
+				 		xhr.responseType = 'json';
+						xhr.onload = function() {
+				      		var status = xhr.status;
+				      		if((status >= 200 && status < 300)||
+				      			status === 304) {
+				       			callback(null, xhr.response);
+				      		} else {
+				       			callback(status, xhr.response);
+				      		}
+				   		};
+				   		xhr.send(null);
+				   		xhr.addEventListener("load", reqListener);
 
+				   	}
+	  	
+  	getJSON("https://api.coinmarketcap.com/v1/ticker/?limit=10",coinCap);
+  	//*************************//
+  	// get JSON from coincap website
+  	function coinCap(err, data) {
+  		if (err !== null) {
+   			 log('Something went wrong: ' + err);
+  		} else {
+  			 let a = data.entries();
+  			 for (let e of a) {
+  			 	if ( x=returnRequested(e[1]) ){
+  			 		 pageVariables.crypto = x;
+  				 }
+  			}
+  		}
+  	}
+  	function reqListener() {
+  		addBitcoinPrice();
+  	}
+  	
+  	//*************************//
+  	// add names of crypto that you want values for
+  	function returnRequested(input) {
+  		let crypto = ["bitcoin"];
+  		if(checkValue(input.id, crypto)) {
+  			return input;
+  		}
+  	}
+
+  	function addBitcoinPrice() {
+  		let x = document.getElementsByClassName("navbar");
+  		let parentNode = x[0];
+  		let newNode = document.createElement("span");
+  		newNode.className = "navbar-text";
+  		let node = document.createTextNode("1 BTC = $"+formatValue(pageVariables.crypto["price_usd"])); //pageVariables.crypto.name+": "+pagevariables.crypto.price_usd4
+  		newNode.appendChild(node);
+  		parentNode.appendChild(newNode);
+  		let middleNode = newNode.previousSibling.previousSibling;
+  		parentNode.insertBefore(newNode,middleNode);
+  	}
   	
