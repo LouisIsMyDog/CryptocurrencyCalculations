@@ -1,0 +1,55 @@
+.highlight {
+    background-color: #f7f7f9;
+}
+
+.form-control-label {
+	font-size: .9em;
+}
+
+div.page-header {
+	padding-bottom: 9px;
+    /* margin: 20px 0 20px; 
+    border-bottom: 1px solid #eee; */
+}
+
+.card-success > .card-header {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+
+.card-success {
+	border-color:#d6e9c6 !important;
+}
+
+.card-alert > .card-header {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.card-alert {
+	border-color:#ebccd1 !important;
+}
+
+.bd-example {
+    position: relative;
+    padding: 1rem;
+    margin: 0 -15px .5rem;
+}
+
+button.btn-outline-light:hover {
+	background-color: rgba(247, 248, 250, 0.5);
+}
+
+button.btn-outline-light:active, button.btn-outline-light.active
+ {
+	color: black;
+	background-color: white;
+	border-color: black;
+	background-image: none;
+}
+
+.navbar-text {
+	color: white !important;
+}
