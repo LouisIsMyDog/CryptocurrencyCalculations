@@ -37,29 +37,29 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="buy_usd">USD</label> <input class="form-control buy_usd" type="number" min="-0.00" maxlength="12" name="buy_usd" value="" placeholder="$" id="buy_usd" oninput="onChange();">
+                                    <label class="col-form-label" for="buy_usd">USD</label> <input class="form-control buy_usd" type="text" maxlength="12" name="buy_usd" value="" placeholder="$" id="buy_usd" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="buy_rate">Rate</label> <input class="form-control buy_rate" type="number" maxlength="12" name="buy_rate" value="" placeholder="@" id="buy_rate" oninput="onChange();">
+                                    <label class="col-form-label" for="buy_rate">Rate</label> <input class="form-control buy_rate" type="text" maxlength="12" name="buy_rate" value="" placeholder="@" id="buy_rate" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-12 col-sm-4">
-                                    <label class=" col-form-label" for="buy_received">Received</label> <input class="form-control buy_received" type="number"  step="0" readonly maxlength="12" name="buy_received" value="" placeholder="-" id="buy_received">
+                                    <label class=" col-form-label" for="buy_received">Received</label> <input class="form-control buy_received" type="text"  step="0" readonly maxlength="12" name="buy_received" value="" placeholder="-" id="buy_received">
                                 </div><!--col -->
                             </div><!--row -->
 
                             <div class="form-group row mb-2">
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="buy_fee">Fee</label> <input class="form-control buy_fee" type="number" maxlength="12" name="buy_fee" value="" placeholder="%" id="buy_fee" oninput="onChange();">
+                                    <label class="col-form-label" for="buy_fee">Fee</label> <input class="form-control buy_fee" type="text" maxlength="12" name="buy_fee" value="" placeholder="%" id="buy_fee" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="buy_fee_dollar">Fee Dollar</label> <input class="form-control buy_fee_dollar" type="number" readonly maxlength="12" name="buy_fee_dollar" value="" id="buy_fee_dollar" placeholder="$">
+                                    <label class="col-form-label" for="buy_fee_dollar">Fee Dollar</label> <input class="form-control buy_fee_dollar" type="text" readonly maxlength="12" name="buy_fee_dollar" value="" id="buy_fee_dollar" placeholder="$">
                                 </div><!--col  -->
 
                                 <div class="col-12 col-sm-4">
-                                    <label class="col-form-label" for="buy_final_received">Final Received</label> <input class="form-control buy_final_received" type="number" readonly maxlength="12" name="buy_final_received" value="" id="buy_final_received" placeholder="-">
+                                    <label class="col-form-label" for="buy_final_received">Final Received</label> <input class="form-control buy_final_received" type="text" readonly maxlength="12" name="buy_final_received" value="" id="buy_final_received" placeholder="-">
                                 </div><!--col -->
                             </div><!--row -->
                         </form>
@@ -77,29 +77,29 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="sell_holdings">Holdings</label> <input class="form-control sell_holdings" type="number" readonly maxlength="12" name="sell_holdings" value="" placeholder="-" id="sell_holdings" oninput="onChange();">
+                                    <label class="col-form-label" for="sell_holdings">Holdings</label> <input class="form-control sell_holdings" type="text" readonly maxlength="12" name="sell_holdings" value="" placeholder="-" id="sell_holdings" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="sell_rate">Rate</label> <input class="form-control sell_rate" type="number" maxlength="12" name="sell_rate" value="" placeholder="@" id="sell_rate" oninput="onChange();">
+                                    <label class="col-form-label" for="sell_rate">Rate</label> <input class="form-control sell_rate" type="text" maxlength="12" name="sell_rate" value="" placeholder="@" id="sell_rate" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-12 col-sm-4">
-                                    <label class="col-form-label" for="sell_usd">USD</label> <input class="form-control sell_usd" type="number" readonly maxlength="12" name="sell_usd" value="" placeholder="$" id="sell_usd">
+                                    <label class="col-form-label" for="sell_usd">USD</label> <input class="form-control sell_usd" type="text" readonly maxlength="12" name="sell_usd" value="" placeholder="$" id="sell_usd">
                                 </div><!--col -->
                             </div><!--row -->
 
                             <div class="form row mb-2">
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label">Fee</label> <input class="form-control sell_fee" type="number" readonly maxlength="12" name="sell_fee" value="" placeholder="%" id="sell_fee" oninput="onChange();">
+                                    <label class="col-form-label">Fee</label> <input class="form-control sell_fee" type="text" readonly maxlength="12" name="sell_fee" value="" placeholder="%" id="sell_fee" oninput="onChange();">
                                 </div><!--col -->
 
                                 <div class="col-6 col-sm-4">
-                                    <label class="col-form-label" for="sell_fee_dollar">Fee Dollar</label> <input class="form-control sell_fee_dollar" type="number" readonly maxlength="12" name="sell_fee_dollar" value="" placeholder="$" id="sell_fee_dollar">
+                                    <label class="col-form-label" for="sell_fee_dollar">Fee Dollar</label> <input class="form-control sell_fee_dollar" type="text" readonly maxlength="12" name="sell_fee_dollar" value="" placeholder="$" id="sell_fee_dollar">
                                 </div><!--col -->
 
                                 <div class="col-12 col-sm-4">
-                                    <label class="col-form-label" for="sell_final_usd">Final USD</label> <input class="form-control sell_final_usd" type="number" readonly maxlength="12" name="ssell_final_usd" value="" placeholder="$" id="sell_final_usd">
+                                    <label class="col-form-label" for="sell_final_usd">Final USD</label> <input class="form-control sell_final_usd" type="text" readonly maxlength="12" name="ssell_final_usd" value="" placeholder="$" id="sell_final_usd">
                                 </div><!--col -->
                             </div><!--row -->
                         </form>
@@ -117,15 +117,15 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-6 col-sm-6">
-                                    <label class="col-form-label" for="total_fee">Fee Paid</label> <input class="form-control total_fee" type="number" readonly maxlength="12" name="total_fee" value="" placeholder="$" id="total_fee">
+                                    <label class="col-form-label" for="total_fee">Fee Paid</label> <input class="form-control total_fee" type="text" readonly maxlength="12" name="total_fee" value="" placeholder="$" id="total_fee">
                                 </div><!--col -->
 
                                 <div class="col-6 col-sm-6">
-                                    <label class="col-form-label" for="earned_percentage">Percentage</label> <input class="form-control earned_percentage" type="number" readonly maxlength="12" name="earned_percentage" value="" placeholder="%" id="earned_percentage">
+                                    <label class="col-form-label" for="earned_percentage">Percentage</label> <input class="form-control earned_percentage" type="text" readonly maxlength="12" name="earned_percentage" value="" placeholder="%" id="earned_percentage">
                                 </div><!--col -->
 
                                 <div class="col-12 col-sm-6">
-                                    <label class="col-form-label" for="earned">Earned</label> <input class="form-control earned" type="number" readonly maxlength="12" name="earned" value="" placeholder="$" id="earned">
+                                    <label class="col-form-label" for="earned">Earned</label> <input class="form-control earned" type="text" readonly maxlength="12" name="earned" value="" placeholder="$" id="earned">
                                 </div><!--col -->
                             </div><!--row -->
                         </form>
