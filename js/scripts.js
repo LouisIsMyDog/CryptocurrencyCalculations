@@ -15,6 +15,8 @@
 		 };
 	}	
 	setPageVariables();
+	// set the pageVariables
+
 	//*************************//
 	// Object with form functions
 	function inputValues() {
@@ -42,10 +44,13 @@
 	// functions triggered when event occurs
 	function buttonEvent() {
 		checkButton();
+		// state of button value
+		// log("State of Button: "+pageVariables.active);
 		switchBuySell();
 		switchReadOnly();
 		resetForm();
-		
+		resetInputGroupAddon();
+		inputGroupAddOn();
 	}
 	//*************************//
 	// Changes arrangement of boxes for different screen sizes
@@ -57,9 +62,13 @@
 	//*************************//
 	// fire up each function in order to make the app work
 	function formFunctions() {
+<<<<<<< HEAD
 		// state of button value
 		log("State of Button: "+pageVariables.active);
 				
+=======
+
+>>>>>>> Major edits
 		// Buy cardOne Sell cardTwo
 		// Sell CardOne Sell cardTwo
 			
@@ -90,6 +99,9 @@
 		
 		insertValues();
 		// add values to the html elements
+
+		changeInputFormType();	
+		// change input form types to number
 		
 		cardColor();
 		// changes color of card depending on profit or loss
@@ -326,6 +338,7 @@
 		input.forEach(function(element) {
 			if(Array.isArray(element)) {
 				element.forEach(function(element2) {
+					element2.value = fixInput(element2.value);
 					myArray.push(element2);
 				})
 			} else {
@@ -370,6 +383,7 @@
 		for (var prop in form) {
 			if(form[prop] != form["run"]){
 			//log(`${prop} = ${form[prop]}`);
+<<<<<<< HEAD
 			if( !pageVariables.active ) {
 				var exclude = ["buy_usd", "buy_rate", "buy_fee", "sell_rate"];
 			} else {
@@ -377,18 +391,32 @@
 
 			}
 			(form[prop] == 0) ? form[prop] = "" : form[prop];
+=======
+				if( !pageVariables.active ) {
+					var exclude = ["buy_usd", "buy_rate", "buy_fee", "sell_rate"];
+				} else {
+					var exclude = ["sell_holdings", "sell_rate", "sell_fee", "buy_rate"];
+				}				
+				(form[prop] == 0) ? form[prop] = "" : form[prop];
+>>>>>>> Major edits
 				if( !exclude.includes(prop) ) {  
 					document.getElementById(`${prop}`).value  = formatOutput(prop, form[prop]);
 					//log(`${prop} = ${form[prop]}`);
 				}
+<<<<<<< HEAD
 			}
 		}
 		//log("*******end******");
+=======
+				
+			}
+		}
+		pageVariables.userInputFields = exclude;
+>>>>>>> Major edits
 	}
 	//*************************//
 	// change the order of buy card or sell card depending on the screen size
 	function changeBootstrapOrdering() {
-
 		if( smallWindowSize() ) {
 			let a = pageVariables.profit;
 			if(pageVariables.removed != 'yes') {
@@ -439,6 +467,7 @@
   	// changefee() edits the values of the fee elements in the form
   	function changeFee(reset=0) {
   			let varFee = ["buy_fee_dollar", (!pageVariables.active) ? "sell_fee" : "buy_fee", "sell_fee_dollar", "total_fee"];
+<<<<<<< HEAD
   			if(reset == 0 ){
 	  			varFee.forEach(function(element) {
 	  				document.getElementById(element).value  = formatOutput(element, 0, 1);
@@ -448,6 +477,17 @@
 	  				document.getElementById(element).value  = formatOutput(element, 0);
 	  			}); 
   			}	
+=======
+	  			if(reset == 0 ){
+		  			varFee.forEach(function(element) {
+		  				document.getElementById(element).value  = formatOutput(element, 0, 1);
+		  			}); 
+	  			} else if (reset == 1 ) {
+		  			varFee.forEach(function(element) {
+		  				document.getElementById(element).value  = formatOutput(element, 0);
+		  			}); 
+	  			}	
+>>>>>>> Major edits
   			return false;	
   	}
 	//*************************//
@@ -523,7 +563,7 @@
 	  	if( pageVariables.active ) {
 		  	pageVariables.active = false;
 	  	} else { 
-	  	pageVariables.active = true;  
+	  	pageVariables.active = true; 
 	  	}
 	  	return pageVariables.active;
   	}
@@ -541,7 +581,11 @@
   	// Switch placeholder of earned
   	function switchProfitToCoin() {
 	  	let earned = retrieveElement("earned").element;
-	  	earned.placeholder = "-";
+	  	if(pageVariables.active) {
+	  	 	earned.placeholder = "-";
+	  	} else {
+	  		earned.placeholder = "$";
+	  	}
   	}
   	//*************************//
   	// get JSON from the website
@@ -560,7 +604,6 @@
 				   		};
 				   		xhr.send(null);
 				   		xhr.addEventListener("load", reqListener);
-
 				   	}
 	  	
   	getJSON("https://api.coinmarketcap.com/v1/ticker/?limit=10",coinCap);
@@ -602,4 +645,105 @@
   		let middleNode = newNode.previousSibling.previousSibling;
   		parentNode.insertBefore(newNode,middleNode);
   	}
+<<<<<<< HEAD
   	
+=======
+  	//*************************//
+  	// change form input type, act accordingly for text vs number
+  	function changeInputFormType() {
+  		pageVariables.inputs.forEach(function(layer){
+  			if(pageVariables.userInputFields.includes(layer.name)) {
+	  			layer.element.setAttribute("type", "number");
+	  		} else {
+	  			layer.element.setAttribute("type", "text");
+	  		}			
+  		});	
+  	}
+  	//*************************//  	
+  	// output for input type=number
+  	function inputOutputNumber(input, name) {
+  		if(Number.isFinite(input)) { 
+  			return roundUp(fixInput(input));
+  		}
+  		return input;
+  	}
+  	//*************************//  	
+  	// insert fancy symbols before input fields
+  	// requires pageVariables.userInputsFields
+  	function inputGroupAddOn() {
+
+  		let x = pageVariables.userInputFields;
+  		let elements = [];
+  		let a = [];
+
+  		for (i=0; i < x.length; i++) {
+  			a[i] = retrieveElement(x[i]);
+  			elements.push(a[i].element);
+  		}
+
+  		pageVariables.userInputElements = elements;
+
+  		let y =[];
+  		let newNode = [];
+  		let newNodeChild = [];
+  		let previousNode = [];
+
+  		for (i=0; i < x.length; i++) {
+  			y[i] = elements[i];
+  			newNode[i] = document.createElement("div");
+  			newNode[i].className = "input-group";
+
+  			newNodeChild[i] = document.createElement("span");
+  			newNodeChild[i].className = "input-group-addon";
+
+  			newNode[i].appendChild(newNodeChild[i]);
+  			newNodeChild[i].innerHTML = y[i].placeholder;
+  			y[i].placeholder = "";
+  			
+  			if(pageVariables.active != null ){
+  			previousNode[i] = y[i].previousSibling;
+  			} else {
+  			previousNode[i] = y[i].previousSibling.previousSibling;	
+  			}
+
+  			newNode[i].appendChild(y[i]);
+  			
+  			insertAfter(newNode[i], previousNode[i]);
+  			
+		}
+
+		// insert node after refrence node
+		function insertAfter(el, referenceNode) {
+				referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+		}
+  	}
+  	function resetInputGroupAddon() {
+		elements = pageVariables.userInputElements;
+		
+		let sibling = [];
+		let parent = [];
+  		
+		for (i=0; i < elements.length; i++){
+			
+			sibling[i] = elements[i].previousSibling;
+
+			parent[i] = elements[i].parentNode;
+			
+			elements[i].placeholder = sibling[i].innerHTML;
+
+			sibling[i].innerHTML = "";
+			
+			unwrapElement( sibling[i], parent[i] );
+			unwrapElement( parent[i], parent[i].parentNode );
+		}			
+		function unwrapElement(element, parent) {
+			while (element.firstChild) parent.insertBefore(element.firstChild, element);
+			parent.removeChild(element);
+		}
+  	}
+
+  	inputGroupAddOn();
+  	// add symbols before input fields
+
+  	  			
+>>>>>>> Major edits

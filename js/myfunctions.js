@@ -1,9 +1,15 @@
+<<<<<<< HEAD
+=======
+// my functions	
+	
+	// doest string contain numbers
+>>>>>>> Major edits
 	function hasNumbers(string){
 		var reg = /\d/;
 		var results = reg.test(string);
 		return results;	
 	}
-		
+	// format input to right notation	
 	function formatValue(value, format='0,000.00') {
 			var number = numeral(value).format(format);
 			//var value = number.value();
@@ -13,16 +19,21 @@
 	function log(log) {
 		return console.log(log);	
 	}
-	
+	// is the input a valid entry
 	function validInput(value) {
 		return (value >= 0) ? true : false;
 	}
-	
+	// function for getting value on form inputs
 	function v(value,setValue='0',newValue='') {
-		if( validInput( document.getElementById(value).value ) )  {
-			return document.getElementById(value).value;
+		let x = document.getElementById(value).value;
+		if( validInput(x) && !isEmpty(x) )  {
+			return fixInput(x);	
 		}	
-		return;
+		return '';
+	}
+	// fix numbering back
+	function fixInput(input) {
+		return formatValue(input,'0.00[0000]');
 	}
 	// check if value is empty
 	function isEmpty(value) {
