@@ -14,7 +14,7 @@ function setPageVariables() {
             return pageVariables.buttonStatus("exchangeActive", this); },
         btcButton: document.getElementById('btcButton'),
         btcActive: function() {
-            return pageVariables.buttonStatus("btcActive", this); }, 
+            return pageVariables.buttonStatus("btcActive", this); },
         dollarBuyTop: {
             buy: ["buy_usd", "buy_rate", "buy_fee"],
             sell: ["sell_rate"]
@@ -407,7 +407,7 @@ function checkInputValue() {
         if (retrieveElement("buy_fee").isEmpty == 0 && retrieveElement("buy_fee").value === 0 ) {
              changeFee();
         }
-    } 
+    }
     if( pageVariables.exchangeActive() )  {
              if (retrieveElement("sell_fee").isEmpty == 0 && retrieveElement("sell_fee").value === 0 ) {
                  changeFee();
@@ -623,7 +623,7 @@ function resetInputGroupAddon() {
     }
 }
 //*************************//
-// pushes array values to another variable 
+// pushes array values to another variable
 function pushValuesOut(input = [], variable = '') {
    // log(input);
     variable = (variable) ? variable : pageVariables.inputForm;
@@ -639,7 +639,7 @@ function pushValuesOut(input = [], variable = '') {
 // add click to copy on the inputs we want
 function inputCopy() {
     var
-    x = retrieveElement("buy_received").element;        
+    x = retrieveElement("buy_received").element;
     // if buy card is on top
     if(pageVariables.userInputFields[0] == "buy_usd") {
         x.setAttribute("data-copytarget", x.name);
@@ -666,5 +666,5 @@ function addGroupAddOnAll() {
 
 }
 //addGroupAddOnAll();
-// write function for when sell is on top or button is clicked and buy_final_received is calculated add another input under - 1 
-// profit card for the usd worth based on orignial sell off calculation. Kinda a cool feature. - 1 
+// write function for when sell is on top or button is clicked and buy_final_received is calculated add another input under - 1
+// profit card for the usd worth based on orignial sell off calculation. Kinda a cool feature. - 1

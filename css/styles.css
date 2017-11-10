@@ -1,90 +1,61 @@
 .highlight {
     background-color: #f7f7f9;
 }
-<<<<<<< HEAD
-
 .form-control-label {
-	font-size: .9em;
+    font-size: .9em;
 }
-
-=======
 .form-control-label {
-	font-size: .9em;
+    font-size: .9em;
 }
->>>>>>> master
 div.page-header {
-	padding-bottom: 9px;
-    /* margin: 20px 0 20px; 
+    padding-bottom: 9px;
+    /* margin: 20px 0 20px;
     border-bottom: 1px solid #eee; */
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 .card-success > .card-header {
-	color: #3c763d;
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
-<<<<<<< HEAD
-
 .card-success {
-	border-color:#d6e9c6 !important;
+    border-color: #d6e9c6 !important;
 }
-
-=======
 .card-success {
-	border-color:#d6e9c6 !important;
+    border-color: #d6e9c6 !important;
 }
->>>>>>> master
 .card-alert > .card-header {
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
-<<<<<<< HEAD
-
 .card-alert {
-	border-color:#ebccd1 !important;
+    border-color: #ebccd1 !important;
 }
-
-=======
 .card-alert {
-	border-color:#ebccd1 !important;
+    border-color: #ebccd1 !important;
 }
->>>>>>> master
 .bd-example {
     position: relative;
     padding: 1rem;
     margin: 0 -15px .5rem;
 }
-<<<<<<< HEAD
-
 button.btn-outline-light:hover {
-	background-color: rgba(247, 248, 250, 0.5);
+    background-color: rgba(247, 248, 250, 0.5);
 }
-
-=======
 button.btn-outline-light:hover {
-	background-color: rgba(247, 248, 250, 0.5);
+    background-color: rgba(247, 248, 250, 0.5);
 }
->>>>>>> master
-button.btn-outline-light:active, button.btn-outline-light.active
- {
-	color: black;
-	background-color: white;
-	border-color: black;
-	background-image: none;
+button.btn-outline-light:active,
+button.btn-outline-light.active {
+    color: black;
+    background-color: white;
+    border-color: black;
+    background-image: none;
 }
-<<<<<<< HEAD
-
 .navbar-text {
-	color: white !important;
-=======
-.navbar-text {
-	color: white !important;
+    color: white !important;
+    color: white !important;
 }
 button {
-	cursor:pointer;
->>>>>>> master
+    cursor: pointer;
 }
