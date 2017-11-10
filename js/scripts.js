@@ -85,6 +85,7 @@ changeBootstrapOrdering();
 //*************************//
 // fire up each function in order to make the app work
 function formFunctions() {
+    log("- - - - - -")
     let a;
     // Buy cardOne Sell cardTwo
     // Sell CardOne Sell cardTwo
@@ -386,7 +387,7 @@ function switchBuySell() {
 //*************************//
 // changefee() edits the values of the fee elements in the form
 function changeFee(reset = 0) {
-    let varFee = ["buy_fee_dollar", (!pageVariables.exchangeActive()) ? "sell_fee" : "buy_fee", "sell_fee_dollar", "total_fee"];
+    let varFee = ["buy_fee_dollar", ( !pageVariables.exchangeActive() ) ? "sell_fee" : "buy_fee", "sell_fee_dollar", "total_fee"];
     if (reset == 0) {
         varFee.forEach(function(element) {
             document.getElementById(element).value = formatOutput(element, 0, 1);
@@ -405,13 +406,13 @@ function checkInputValue() {
     if(!pageVariables.exchangeActive()) {
         if (retrieveElement("buy_fee").isEmpty == 0 && retrieveElement("buy_fee").value === 0 ) {
              changeFee();
-        } else {
+        }
+    } 
+    if( pageVariables.exchangeActive() )  {
              if (retrieveElement("sell_fee").isEmpty == 0 && retrieveElement("sell_fee").value === 0 ) {
                  changeFee();
              }
-        }
-     }
-
+    }
     if (retrieveElement("buy_fee").isEmpty == 1) {
         changeFee(reset = 1);
     }
@@ -568,8 +569,9 @@ function changeInputFormType() {
 //*************************//
 // insert fancy symbols before input fields
 // requires pageVariables.userInputsFields
-function inputGroupAddOn() {
+function inputGroupAddOn(input='') {
     let x = pageVariables.userInputFields;
+    (input=='') ? null : x = input; // added this new
     let elements = [];
     let a = [];
     for (i = 0; i < x.length; i++) {
@@ -633,8 +635,6 @@ function pushValuesOut(input = [], variable = '') {
         variable.push(input);
     }
 }
-// write function for when sell is on top or button is clicked and buy_final_received is calculated add another input under
-// profit card for the usd worth based on orignial sell off calculation. Kinda a cool feature.
 
 // add click to copy on the inputs we want
 function inputCopy() {
@@ -650,5 +650,20 @@ function inputCopy() {
         }
     }
 }
-
 //log(document.querySelector("buy_received"));
+// add Bootstrap GroupAddOn to all inputs for easy reading
+function addGroupAddOnAll() {
+    // thoughts are to make an array of input names and use code used for userInputFields groupAddOn
+    x = document.getElementsByTagName("input");
+    y = [];
+    for (i=0;i<x.length;i++) {
+         y.push(x[i].name);
+    }
+    inputGroupAddOn(y);
+    //log(y);
+    //log(pageVariables.userInputFields);
+
+}
+//addGroupAddOnAll();
+// write function for when sell is on top or button is clicked and buy_final_received is calculated add another input under - 1 
+// profit card for the usd worth based on orignial sell off calculation. Kinda a cool feature. - 1 
