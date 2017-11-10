@@ -662,6 +662,7 @@ function addGroupAddOnAll() {
     inputGroupAddOn(y);
     //log(y);
     //log(pageVariables.userInputFields);
+    //test
 
 }
 //addGroupAddOnAll();
