@@ -73,7 +73,7 @@ function buttonEvent() {
     switchReadOnly();
     resetForm();
     resetInputGroupAddon();
-    inputGroupAddOn();
+    addGroupAddOnAll();
 }
 //*************************//
 // Changes arrangement of boxes for different screen sizes
@@ -116,7 +116,7 @@ function formFunctions() {
     checkInputValue();
     // if buy_fee is empty or 0 the forms fee elements change accordingly
     if (!pageVariables.startedGroupAddOn) { // run only once
-        inputGroupAddOn();
+        addGroupAddOnAll();
         pageVariables.startedGroupAddOn = 1;
     }
     // add symbols before input fields
@@ -307,10 +307,10 @@ function formatOutput(name, value, skip = 0) {
         let percentageFormat = [(!pageVariables.exchangeActive()) ? "sell_fee" : "buy_fee", "earned_percentage"];
         let coinFormat = ["buy_received", "buy_final_received", "sell_holdings", (!pageVariables.exchangeActive()) ? null : "earned"];
         if (dollarFormat.includes(name)) {
-            return formatValue(value, '$0,0.00');
+            return formatValue(value, '0,0.00');
         }
         if (percentageFormat.includes(name)) {
-            return formatValue(value, '0.00[0]%');
+            return formatValue(value, '0.00[0]');
         }
         if (coinFormat.includes(name)) {
             return formatValue(value, '[0,]0.[00000]');
@@ -373,7 +373,6 @@ function cardColor() {
         case (x == 0):
             a.classList.remove("card-alert", "card-success");
             a.classList.add("card-default");
-            break;
     }
 }
 //*************************//
@@ -482,17 +481,6 @@ function resetForm() {
         document.getElementById(element).value = "";
     });
     form.run();
-    switchProfitToCoin();
-}
-//*************************//
-// Switch placeholder of earned
-function switchProfitToCoin() {
-    let earned = retrieveElement("earned").element;
-    if (pageVariables.exchangeActive()) {
-        earned.placeholder = "-";
-    } else {
-        earned.placeholder = "$";
-    }
 }
 //*************************//
 // get JSON from the website
@@ -570,6 +558,7 @@ function changeInputFormType() {
 // insert fancy symbols before input fields
 // requires pageVariables.userInputsFields
 function inputGroupAddOn(input='') {
+    addSymbol();
     let x = pageVariables.userInputFields;
     (input=='') ? null : x = input; // added this new
     let elements = [];
@@ -590,7 +579,7 @@ function inputGroupAddOn(input='') {
         newNodeChild[i] = document.createElement("span");
         newNodeChild[i].className = "input-group-addon";
         newNode[i].appendChild(newNodeChild[i]);
-        newNodeChild[i].innerHTML = y[i].placeholder;
+        newNodeChild[i].innerHTML = placeholder(y[i].id);
         y[i].placeholder = "";
         if (pageVariables.exchangeActive() != null) {
             previousNode[i] = y[i].previousSibling;
@@ -603,6 +592,9 @@ function inputGroupAddOn(input='') {
     // insert node after refrence node
     function insertAfter(el, referenceNode) {
         referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+    }
+    function placeholder(input) {
+        return retrieveElement(input).symbol;
     }
 }
 function resetInputGroupAddon() {
@@ -625,7 +617,6 @@ function resetInputGroupAddon() {
 //*************************//
 // pushes array values to another variable
 function pushValuesOut(input = [], variable = '') {
-   // log(input);
     variable = (variable) ? variable : pageVariables.inputForm;
     if (Array.isArray(input)) {
         for (i = 0; i < input.length; i++) {
@@ -650,6 +641,64 @@ function inputCopy() {
         }
     }
 }
+// add symbols to input form
+function addSymbol() {
+    var x = pageVariables.inputForm;
+    for (i=0; i<x.length; i++) {
+        y = getSymbol(x[i].name);
+        x[i].symbol = y;
+    }
+    pageVariables.inputForm = x;
+    function getSymbol(input) {
+        switch (input) {
+            case "buy_usd":
+                symbol = "$";
+                break;
+            case "buy_rate":
+                symbol = "@";
+                break;
+            case "buy_fee":
+                symbol = "%";
+                break;
+            case "sell_rate":
+                symbol = "@";
+                break;
+            case "buy_fee_dollar":
+                symbol = "$";
+                break;
+            case "buy_received":
+                symbol = "-";
+                break;
+            case "buy_final_received":
+                symbol = "-";
+                break;
+            case "sell_holdings":
+                symbol = "-";
+                break;
+            case "sell_usd":
+                symbol = "$";
+                break;
+            case "sell_fee":
+                symbol = "%";
+                break;
+            case "sell_fee_dollar":
+                symbol = "$";
+                break;
+            case "sell_final_usd":
+                symbol = "$";
+                break;
+            case "earned":
+                symbol = (pageVariables.exchangeActive()) ? "-" : "$";
+                break;
+            case "earned_percentage":
+                symbol = "%";
+                break;
+            case "total_fee":
+                symbol = "$";
+}
+        return symbol;
+    }
+}
 //log(document.querySelector("buy_received"));
 // add Bootstrap GroupAddOn to all inputs for easy reading
 function addGroupAddOnAll() {
@@ -660,11 +709,6 @@ function addGroupAddOnAll() {
          y.push(x[i].name);
     }
     inputGroupAddOn(y);
-    //log(y);
-    //log(pageVariables.userInputFields);
-    //test
-
 }
-//addGroupAddOnAll();
 // write function for when sell is on top or button is clicked and buy_final_received is calculated add another input under - 1
 // profit card for the usd worth based on orignial sell off calculation. Kinda a cool feature. - 1
